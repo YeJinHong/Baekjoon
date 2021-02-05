@@ -10,7 +10,7 @@ class Score implements Comparator<Score>{
 	private int english;
 	private int math;
 	
-	public Score(String name, int korean, int englisth, int math) {
+	public Score(String name, int korean, int english, int math) {
 		super();
 		this.name = name;
 		this.korean = korean;
@@ -30,17 +30,17 @@ class Score implements Comparator<Score>{
 		this.name = name;
 	}
 	
-	@Override
 	public int compare(Score o1, Score o2) {
-		if(o1.korean == o2.korean&&o1.english==o2.english&&o1.math==o2.math)
+		if(o1.korean==o2.korean&&o1.english==o2.english&&o1.math==o2.math)
 			return o1.name.compareTo(o2.name);
-		else if(o1.korean == o2.korean&&o1.english==o2.english)
+		else if(o1.korean==o2.korean&&o1.english==o2.english)
 			return (o1.math-o2.math)*-1;
-		else if(o1.korean == o2.korean)
+		else if(o1.korean==o2.korean)
 			return (o1.english-o2.english);
 		else
 			return (o1.korean-o2.korean)*-1;
 	}
+	
 }
 public class BJ10825_ssohee {
 	public static void main(String[] args) throws IOException {
@@ -51,8 +51,7 @@ public class BJ10825_ssohee {
 		Score[] sc = new Score[n];
 		for(int i=0; i<n; i++) {
 			st = new StringTokenizer(br.readLine());
-			sc[i] = new Score(st.nextToken(), Integer.parseInt(st.nextToken()),
-					Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken()) );
+			sc[i] = new Score(st.nextToken(), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
 		}
 		Arrays.sort(sc, new Score());
 		for(int i=0; i<sc.length; i++) {
@@ -64,5 +63,4 @@ public class BJ10825_ssohee {
 		br.close();
 		bw.close();
 	}
-	
 }

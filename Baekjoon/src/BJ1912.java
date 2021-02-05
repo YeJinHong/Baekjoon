@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 //1912
 //연속합이 가장 큰 것을 고르는 문제.
-public class ContinuousSum {
+public class BJ1912 {
 	public static void main(String args[]) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
