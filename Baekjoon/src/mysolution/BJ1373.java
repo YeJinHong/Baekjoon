@@ -7,19 +7,18 @@ import java.io.InputStreamReader;
 public class BJ1373 {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		Long a = Long.parseLong(br.readLine(), 2);
+		String s = br.readLine();
 		StringBuilder sb = new StringBuilder();
-		while(a != 0) {
-			long rest = a%8;
-			if(rest >= 10) { //10넘어가면 알파벳으로 표기
-				rest += 55;
-				sb.insert(0, (char)(rest));
-			}
-			else {
-				sb.insert(0, rest);
-			}
-			a/=8;
+		
+		for(int i=s.length(); i-3>=0;i= i-3) {
+			String sub = s.substring(i-3, i);
+			int n = Integer.parseInt(sub, 2);
+			sb.append(n);
 		}
+		if(s.length()%3 !=0)
+			sb.append(Integer.parseInt(s.substring(0, s.length()%3), 2));
+		sb.reverse();
+		
 		System.out.println(sb);
 	}
 }
