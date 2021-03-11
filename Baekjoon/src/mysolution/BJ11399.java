@@ -3,23 +3,26 @@ package mysolution;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-// 대회 or 인턴
-public class BJ2875 {
+//ATM
+public class BJ11399 {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
+		int P[] = new int[n];
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		int n = Integer.parseInt(st.nextToken());
-		int m = Integer.parseInt(st.nextToken());
-		int k = Integer.parseInt(st.nextToken());
-		int team = Math.min(n/2, m); // 인턴을 고려하지 않았을 때 만들수 있는 최대 팀의 개수
-		int able = n + m - k;
+		for(int i=0; i<n; i++) {
+			P[i] = Integer.parseInt(st.nextToken());
+		}
+		Arrays.parallelSort(P);
 		
-		while(able < 3*team) {
-			team--;
+		int sum = 0;
+		for(int i=0; i<n; i++) {
+			sum += (n-i)*P[i];
 		}
 		
-		System.out.print(team);
+		System.out.println(sum);
 	}
 }
